@@ -25,6 +25,7 @@ import androidx.media3.effect.OverlaySettings
 import androidx.media3.effect.Presentation
 import androidx.media3.effect.RgbAdjustment
 import androidx.media3.effect.TextOverlay
+import androidx.media3.effect.TextureOverlay
 import androidx.media3.transformer.Composition
 import androidx.media3.transformer.DefaultEncoderFactory
 import androidx.media3.transformer.EditedMediaItem
@@ -117,7 +118,7 @@ fun textEffect(t: TextCfg, tf: Typeface): Effect? {
     s.setSpan(AbsoluteSizeSpan(t.size), 0, s.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     s.setSpan(TfSpan(tf), 0, s.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     val settings = OverlaySettings.Builder().setBackgroundFrameAnchor(0f, t.y).build()
-    return OverlayEffect(ImmutableList.of(TextOverlay.createStaticTextOverlay(s, settings)))
+    return OverlayEffect(ImmutableList.of<TextureOverlay>(TextOverlay.createStaticTextOverlay(s, settings)))
 }
 
 @UnstableApi
